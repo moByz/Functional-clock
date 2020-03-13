@@ -1,6 +1,8 @@
 # Functional-clock
 
 ```JS
+'use strict'
+
 const compose = (...fns) => arg => fns.reduce((composed, f) => f(composed), arg)
 const oneSecond = () => 1000
 const getCurrentTime = () => new Date()
@@ -17,9 +19,7 @@ const serializeClockTime = date =>
 const civilianHours = clockTime =>
     ({
         ...clockTime,
-        hours: (clockTime.hours < 12) ?
-            clockTime.hours + 12 :
-            clockTime.hours
+        hours: (clockTime.hours < 12) ? clockTime.hours + 12 : clockTime.hours
     })
 
 const appendAMPM = clockTime =>
